@@ -16,6 +16,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.android.testing.blueprint">
 
+    <!-- These permissions are required for the Android Support Test Library Logging Rules -->
+    <uses-permission android:name="android.permission.DUMP" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-sdk android:targetSdkVersion="22" android:minSdkVersion="10"
         tools:overrideLibrary="android.support.test.uiautomator.v18"/>
 

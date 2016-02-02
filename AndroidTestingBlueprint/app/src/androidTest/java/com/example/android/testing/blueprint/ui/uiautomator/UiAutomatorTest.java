@@ -24,6 +24,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SdkSuppress;
+import android.support.test.rule.logging.EnableTestTracingRule;
+import android.support.test.rule.logging.LogDeviceGetPropInfoRule;
+import android.support.test.rule.logging.LogGraphicsStatsRule;
+import android.support.test.rule.logging.LogLogcatRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
@@ -34,6 +38,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 import com.example.android.testing.blueprint.R;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -56,6 +61,18 @@ import static org.junit.Assert.assertThat;
 @SdkSuppress(minSdkVersion = 18)
 @LargeTest
 public class UiAutomatorTest {
+
+    @Rule
+    public EnableTestTracingRule mEnableTestTracingRule = new EnableTestTracingRule();
+
+    @Rule
+    public LogDeviceGetPropInfoRule mLogDeviceGetPropInfoRule = new LogDeviceGetPropInfoRule();
+
+    @Rule
+    public LogGraphicsStatsRule mLogGraphicsStatsRule = new LogGraphicsStatsRule();
+
+    @Rule
+    public LogLogcatRule mLogLogcatRule = new LogLogcatRule();
 
     /**
      * The target app package.

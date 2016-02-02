@@ -19,6 +19,10 @@ package com.example.android.testing.blueprint.integration;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.rule.logging.EnableTestTracingRule;
+import android.support.test.rule.logging.LogDeviceGetPropInfoRule;
+import android.support.test.rule.logging.LogGraphicsStatsRule;
+import android.support.test.rule.logging.LogLogcatRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.MediumTest;
 
@@ -26,6 +30,7 @@ import com.example.android.testing.blueprint.R;
 import com.example.android.testing.blueprint.androidlibrarymodule.AndroidLibraryModuleClass;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -42,6 +47,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(AndroidJUnit4.class)
 @MediumTest
 public class AndroidLibraryModuleIntegrationTest {
+
+    @Rule
+    public EnableTestTracingRule mEnableTestTracingRule = new EnableTestTracingRule();
+
+    @Rule
+    public LogDeviceGetPropInfoRule mLogDeviceGetPropInfoRule = new LogDeviceGetPropInfoRule();
+
+    @Rule
+    public LogGraphicsStatsRule mLogGraphicsStatsRule = new LogGraphicsStatsRule();
+
+    @Rule
+    public LogLogcatRule mLogLogcatRule = new LogLogcatRule();
 
     private Context mContext;
 

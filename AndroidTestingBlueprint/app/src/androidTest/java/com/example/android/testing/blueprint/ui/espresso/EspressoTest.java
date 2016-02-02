@@ -17,6 +17,12 @@
 package com.example.android.testing.blueprint.ui.espresso;
 
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.rule.logging.EnableTestTracingRule;
+import android.support.test.rule.logging.LogBatteryInformationRule;
+import android.support.test.rule.logging.LogDeviceGetPropInfoRule;
+import android.support.test.rule.logging.LogGraphicsStatsRule;
+import android.support.test.rule.logging.LogLogcatRule;
+import android.support.test.rule.logging.LogNetStatsRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
@@ -36,6 +42,18 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class EspressoTest {
+
+    @Rule
+    public EnableTestTracingRule mEnableTestTracingRule = new EnableTestTracingRule();
+
+    @Rule
+    public LogDeviceGetPropInfoRule mLogDeviceGetPropInfoRule = new LogDeviceGetPropInfoRule();
+
+    @Rule
+    public LogGraphicsStatsRule mLogGraphicsStatsRule = new LogGraphicsStatsRule();
+
+    @Rule
+    public LogLogcatRule mLogLogcatRule = new LogLogcatRule();
 
     @Rule
     public ActivityTestRule<HelloTestingBlueprintActivity> mActivityRule =

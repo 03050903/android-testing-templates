@@ -16,6 +16,10 @@
 
 package com.example.android.testing.blueprint.ui.espresso;
 
+import android.support.test.rule.logging.EnableTestTracingRule;
+import android.support.test.rule.logging.LogDeviceGetPropInfoRule;
+import android.support.test.rule.logging.LogGraphicsStatsRule;
+import android.support.test.rule.logging.LogLogcatRule;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -38,8 +42,20 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @LargeTest
 public class EspressoTestForFlavor2 {
 
-  // Literal string instead of R.id.app_name because we want this test to only pass with flavor2.
-  public static final String APP_NAME_FLAVOR2 = "AndroidTestingBlueprint Flavor2";
+    @Rule
+    public EnableTestTracingRule mEnableTestTracingRule = new EnableTestTracingRule();
+
+    @Rule
+    public LogDeviceGetPropInfoRule mLogDeviceGetPropInfoRule = new LogDeviceGetPropInfoRule();
+
+    @Rule
+    public LogGraphicsStatsRule mLogGraphicsStatsRule = new LogGraphicsStatsRule();
+
+    @Rule
+    public LogLogcatRule mLogLogcatRule = new LogLogcatRule();
+
+    // Literal string instead of R.id.app_name because we want this test to only pass with flavor2.
+    public static final String APP_NAME_FLAVOR2 = "AndroidTestingBlueprint Flavor2";
 
     @Rule
     public ActivityTestRule<HelloTestingBlueprintActivity> mActivityRule =
